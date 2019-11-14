@@ -1,0 +1,7 @@
+name: Audit form
+description: 'This is a basic audit form developed in drupal 8.'
+type: module
+core: 8.x
+package: custom
+dependencies:
+  - block

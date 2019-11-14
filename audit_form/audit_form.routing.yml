@@ -1,0 +1,16 @@
+audit_form_list:
+  path: '/audit-form'
+  defaults:
+    _form: '\Drupal\audit_form\Form\VirtualForm'
+    _title: 'Enter your credentials'
+  requirements:
+    _permission: 'access content'
+
+audit_form_del:
+  path: '/audit-form/form/delete/{cid}'
+  defaults:
+    _form: '\Drupal\audit_form\Form\DeleteForm'
+    _title: 'delete it'
+  requirements:
+    _permission: 'access content'
+

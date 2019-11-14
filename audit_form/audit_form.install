@@ -1,0 +1,84 @@
+<?php 
+
+use Drupal\Core\Database\Database;
+
+function audit_form_update_8002() {
+    $spec = array(
+    'description' => 'Demo Table',
+    'fields' => array(
+      'sno' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Unique person ID.',
+      ),
+      'eid' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Eid .',
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name .',
+      ),
+      'designation' => array(
+        'type' => 'varchar',
+        'not null' => TRUE,    
+        'length' => 255,    
+        'description' => 'Designation .',
+      ),
+      'location' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Location',
+      ),
+    ),
+    'primary key' => array('sno'),
+     
+  ); 
+  
+    $schema = Database::getConnection()->schema();
+    $schema->createTable('stark', $spec);
+}
+  function audit_form_update_8003() {
+  $fields = array(
+    'country' => [
+      'type' => 'varchar',
+      'length' => 64,
+      'not null' => TRUE,
+      'default' => '',
+      ],
+    );
+  
+
+  foreach ($fields as $key => $field)  {
+    if (!db_field_exists('stark', $key)) {
+      db_add_field('stark', $key, $field);
+    }
+  }
+  }
+    function audit_form_update_8004() {
+    $fields = array(
+    'state' => [
+      'type' => 'varchar',
+      'length' => 64,
+      'not null' => TRUE,
+      'default' => '',
+      ],
+    );
+
+  foreach ($fields as $key => $field)  {
+    if (!db_field_exists('stark', $key)) {
+      db_add_field('stark', $key, $field);
+    }
+  }
+
+
+}
+?>
